@@ -20,6 +20,7 @@
         .modal {
             background: #fff;
             width: 420px;
+            max-width: 90%;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
@@ -82,13 +83,27 @@
         }
 
         const noBtn = document.querySelector('.no');
-        noBtn.addEventListener('mouseover', () => {
-            const i = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth - 40));
-            const j = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight - 40));
+
+        function moveButton() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            const newX = Math.floor(Math.random() * (width - noBtn.offsetWidth - 50));
+            const newY = Math.floor(Math.random() * (height - noBtn.offsetHeight - 50));
 
             noBtn.style.position = 'fixed';
-            noBtn.style.left = i + 'px';
-            noBtn.style.top = j + 'px';
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveButton();
         });
     </script>
 
