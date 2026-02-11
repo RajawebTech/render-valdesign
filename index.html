@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Offer Popup</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #ff8c1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .modal {
+            background: #fff;
+            width: 420px;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #2c2c54;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 120px;
+            padding: 10px;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background: #2ecc71;
+        }
+
+        .no {
+            background: #e74c3c;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="modal">
+        <h2>We Can See That You Likes Us!</h2>
+        <p>Would you like a 15$ Discount to become one of our subscribers?</p>
+
+        <div class="btns">
+            <button class="yes" onclick="goYes()">Yes</button>
+            <button class="no" onclick="alert('Maybe next time 😊')">No</button>
+        </div>
+
+        <small>This is a one-time deal! Choose wisely!</small>
+    </div>
+
+    <script>
+        function goYes() {
+            window.location.href = "welcome.html";
+        }
+
+        const noBtn = document.querySelector('.no');
+        noBtn.addEventListener('mouseover', () => {
+            const i = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth - 40));
+            const j = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight - 40));
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = i + 'px';
+            noBtn.style.top = j + 'px';
+        });
+    </script>
+
+</body>
+
+</html>
